@@ -1,0 +1,8 @@
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/assets/images/wallpaper.jpg);
+  display: flex;
+  justify-content: center;
+}
+

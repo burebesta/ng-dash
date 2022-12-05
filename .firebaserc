@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "empr-7520b"
+  },
+  "targets": {
+    "empr-7520b": {
+      "hosting": {
+        "emp": [
+          "empr-7520b"
+        ]
+      }
+    }
+  }
+}

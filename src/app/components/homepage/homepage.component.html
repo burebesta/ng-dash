@@ -1,0 +1,77 @@
+<div class="page">
+  <div class="header">
+    <button mat-raised-button color="primary"  (click)="showLogin = true">Sign Up</button>
+    <button mat-raised-button color="primary" (click)="showLogin = false">Login</button>
+  </div>
+
+  <form
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSignUp()"
+    *ngIf="showLogin">
+      <div class="form-item">
+        <label for="firstName">
+          First Name
+        </label>
+        <input id="firstName" type="text" formControlName="firstName">
+      </div>
+      <div class="form-item">
+        <label for="lastName">
+          Last Name
+        </label>
+        <input id="lastName" type="text" formControlName="lastName">
+      </div>
+      <div class="form-item">
+        <label for="phone">
+          Phone
+        </label>
+        <input id="phone" type="text" formControlName="phone">
+      </div>
+      <div class="form-item">
+        <label for="email">
+          Email
+        </label>
+        <input id="email" type="text" formControlName="email">
+      </div>
+      <div class="form-item">
+        <label for="password">
+          Password
+        </label>
+        <input id="password" type="password" formControlName="password" autocomplete="on">
+      </div>
+
+      <button class="terms-button" mat-button (click)="openDialog()">Show Terms and Conditions</button>
+
+          <div class="terms-area">
+            <span>Agree</span>
+            <input id="terms" type="checkbox" formControlName="terms" >
+          </div>
+
+
+
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">Sign Up</button>
+
+  </form>
+
+  <form
+    [formGroup]="signInForm"
+    (ngSubmit)="onSignIn()"
+    *ngIf="!showLogin">
+    <div class="form-item">
+      <label for="email">
+        Email
+      </label>
+      <input id="email" type="text" formControlName="email">
+    </div>
+    <div class="form-item last-pass">
+      <label for="password">
+        Password
+      </label>
+      <input id="password" type="password" formControlName="password" autocomplete="on">
+    </div>
+    <br>
+    <button  mat-raised-button color="primary" type="submit" [disabled]="!signInForm.valid">Login</button>
+
+  </form>
+
+

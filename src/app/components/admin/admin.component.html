@@ -1,0 +1,58 @@
+
+
+<div class="page">
+  <div class="page-header">
+    <h1>Hi, {{userEmail}}</h1>
+    <button mat-raised-button color="primary" (click)="auth.logOut()">Log Out</button>
+  </div>
+
+
+  <div class="search-bar">
+    <input
+      (keyup.enter)="searchData(searchInput.value)"
+      type="text"
+      #searchInput>
+  </div>
+
+  <table cdk-table [dataSource]="tableDataSource" matSort (matSortChange)="sortData($event)">
+    <ng-container cdkColumnDef="firstName">
+      <th cdk-header-cell mat-sort-header *cdkHeaderCellDef > First Name </th>
+      <td cdk-cell *cdkCellDef="let user">
+        {{ user.firstName }}
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="lastName">
+      <th cdk-header-cell mat-sort-header *cdkHeaderCellDef> Last Name </th>
+      <td cdk-cell *cdkCellDef="let user">
+        {{ user.lastName }}
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="email">
+      <th cdk-header-cell mat-sort-header *cdkHeaderCellDef> Email </th>
+      <td cdk-cell *cdkCellDef="let user">
+        {{ user.email }}
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="phone">
+      <th cdk-header-cell mat-sort-header *cdkHeaderCellDef> Phone </th>
+      <td cdk-cell *cdkCellDef="let user">
+        {{ user.phone }}
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="delete">
+      <th cdk-header-cell *cdkHeaderCellDef></th>
+      <td cdk-cell *cdkCellDef="let user">
+        <mat-icon (click)="deleteUser(user.email)">close</mat-icon>
+      </td>
+    </ng-container>
+    <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [length]="dataSource.length"
+                [pageSize]="5"
+                (page)="paginate($event)"
+                [hidePageSize]="true">
+  </mat-paginator>
+
+</div>
